@@ -1,0 +1,68 @@
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+import { Toaster } from "@/components/ui/toaster";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: {
+    default: "UAE Coupon Codes 2026 – Verified Promo Codes & Cashback | That Coupon",
+    template: "%s | That Coupon",
+  },
+  description:
+    "The leading coupon and cashback platform in the UAE & GCC. Verified, tested promo codes for Noon, Namshi, Shosh Arab, Bloomingdale's and more. Updated daily.",
+  metadataBase: new URL("https://www.thatcoupon.com"),
+  icons: {
+    icon: "https://www.thatcoupon.com/favicon.ico",
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" dir="ltr" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="" />
+        <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
+        {/* Hreflang for GCC */}
+        <link rel="alternate" hreflang="en-AE" href="https://www.thatcoupon.com/?country=uae" />
+        <link rel="alternate" hreflang="en-SA" href="https://www.thatcoupon.com/?country=ksa" />
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-SLYQCDC3M5" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-SLYQCDC3M5');
+            `,
+          }}
+        />
+      </head>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-gray-800`}
+      >
+        {children}
+        <Toaster />
+      </body>
+    </html>
+  );
+}
