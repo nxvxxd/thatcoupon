@@ -67,7 +67,7 @@ export function HomeContent() {
             <input
               type="text"
               placeholder="Search for a store or code (e.g. Noon, LL44)..."
-              className="w-full py-4 px-6 pr-36 rounded-full text-sm shadow-2xl outline-none text-gray-800"
+              className="w-full py-4 px-6 pr-36 rounded-full text-sm shadow-2xl outline-none text-gray-800 bg-white"
               id="searchInput"
             />
             <button className="absolute right-2 top-2 py-3 px-6 bg-gradient-to-br from-amber-400 to-amber-600 text-white border-none rounded-full text-sm font-bold cursor-pointer transition-transform hover:scale-105 shadow-lg">

@@ -38,7 +38,7 @@ export function Newsletter({ variant = "amber" }: NewsletterProps) {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email address"
-            className="py-3 px-5 rounded-md text-gray-800 text-sm outline-none border-none"
+            className="py-3 px-5 rounded-md text-gray-800 text-sm outline-none border-none bg-white"
             required
           />
           {whatsapp && (
@@ -47,7 +47,7 @@ export function Newsletter({ variant = "amber" }: NewsletterProps) {
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder="WhatsApp Number (e.g. +971501234567)"
-              className="py-3 px-5 rounded-md text-gray-800 text-sm outline-none border-none"
+              className="py-3 px-5 rounded-md text-gray-800 text-sm outline-none border-none bg-white"
             />
           )}
           <div className="flex justify-center gap-6 flex-wrap">
