@@ -34,18 +34,16 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
       <head>
+        <base href="https://www.thatcoupon.com/" />
+        <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="" />
-        <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        />
+
         {/* Hreflang for GCC */}
         <link rel="alternate" hreflang="en-AE" href="https://www.thatcoupon.com/?country=uae" />
         <link rel="alternate" hreflang="en-SA" href="https://www.thatcoupon.com/?country=ksa" />
-        {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-SLYQCDC3M5" />
+        {/* Google tag (gtag.js) - defer to avoid render blocking */}
+        <script async defer src="https://www.googletagmanager.com/gtag/js?id=G-SLYQCDC3M5" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
