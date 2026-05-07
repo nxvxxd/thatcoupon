@@ -20,9 +20,9 @@ export const metadata: Metadata = {
   },
   description:
     "The leading coupon and cashback platform in the UAE & GCC. Verified, tested promo codes for Noon, Namshi, Shosh Arab, Bloomingdale's and more. Updated daily.",
-  metadataBase: new URL("https://www.thatcoupon.com"),
+  metadataBase: new URL("https://thatcoupon.com"),
   icons: {
-    icon: "https://www.thatcoupon.com/favicon.ico",
+    icon: "https://thatcoupon.com/favicon.ico",
   },
 };
 
@@ -34,14 +34,14 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
       <head>
-        <base href="https://www.thatcoupon.com/" />
+        <base href="https://thatcoupon.com/" />
         <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="" />
 
         {/* Hreflang for GCC */}
-        <link rel="alternate" hreflang="en-AE" href="https://www.thatcoupon.com/?country=uae" />
-        <link rel="alternate" hreflang="en-SA" href="https://www.thatcoupon.com/?country=ksa" />
+        <link rel="alternate" hreflang="en-AE" href="https://thatcoupon.com/?country=uae" />
+        <link rel="alternate" hreflang="en-SA" href="https://thatcoupon.com/?country=ksa" />
         {/* Google tag (gtag.js) - defer to avoid render blocking */}
         <script async defer src="https://www.googletagmanager.com/gtag/js?id=G-SLYQCDC3M5" />
         <script

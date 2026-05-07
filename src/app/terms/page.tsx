@@ -45,7 +45,7 @@ export default function TermsPage() {
               Welcome to {SITE_NAME}. These Terms of Service (&quot;Terms&quot;)
               govern your access to and use of{" "}
               <span className="text-emerald-700 font-medium">
-                www.thatcoupon.com
+                thatcoupon.com
               </span>{" "}
               (the &quot;Site&quot;) and the services, features, content, and
               functionality offered through the Site (collectively, the

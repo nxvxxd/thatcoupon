@@ -46,7 +46,7 @@ export default function PrivacyPolicyPage() {
               Privacy Policy explains how we collect, use, disclose, and
               safeguard your information when you visit our website{" "}
               <span className="text-emerald-700 font-medium">
-                www.thatcoupon.com
+                thatcoupon.com
               </span>{" "}
               (the &quot;Site&quot;). Please read this privacy policy carefully.
               By accessing or using the Site, you acknowledge that you have read,

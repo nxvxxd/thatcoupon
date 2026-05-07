@@ -45,7 +45,7 @@ export interface Store {
 }
 
 export const SITE_NAME = "That Coupon";
-export const SITE_URL = "https://www.thatcoupon.com";
+export const SITE_URL = "https://thatcoupon.com";
 export const LAST_UPDATED = "May 4, 2026";
 
 export const stores: Store[] = [

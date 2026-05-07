@@ -11,12 +11,12 @@ export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": SITE_NAME, "item": "https://www.thatcoupon.com/" },
+      { "@type": "ListItem", "position": 1, "name": SITE_NAME, "item": "https://thatcoupon.com/" },
       ...items.map((item, index) => ({
         "@type": "ListItem",
         "position": index + 2,
         "name": item.label,
-        ...(item.href ? { "item": `https://www.thatcoupon.com${item.href}` } : {})
+        ...(item.href ? { "item": `https://thatcoupon.com${item.href}` } : {})
       }))
     ]
   };
