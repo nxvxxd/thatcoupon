@@ -35,6 +35,9 @@ export function Header() {
             <Link href="/about" className="text-sm font-medium text-gray-600 hover:text-emerald-700 transition-colors">
               About
             </Link>
+            <Link href="/blog" className="text-sm font-medium text-gray-600 hover:text-emerald-700 transition-colors">
+              Blog
+            </Link>
           </nav>
 
           <button
@@ -58,6 +61,7 @@ export function Header() {
             <Link href="/categories/fashion" className="text-sm font-medium text-gray-600 hover:text-emerald-700" onClick={() => setMobileOpen(false)}>Fashion</Link>
             <Link href="/categories/electronics" className="text-sm font-medium text-gray-600 hover:text-emerald-700" onClick={() => setMobileOpen(false)}>Electronics</Link>
             <Link href="/about" className="text-sm font-medium text-gray-600 hover:text-emerald-700" onClick={() => setMobileOpen(false)}>About</Link>
+            <Link href="/blog" className="text-sm font-medium text-gray-600 hover:text-emerald-700" onClick={() => setMobileOpen(false)}>Blog</Link>
           </nav>
         )}
       </div>

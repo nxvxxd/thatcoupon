@@ -8,11 +8,14 @@ import { FaqAccordion } from "@/components/FaqAccordion";
 import { Newsletter } from "@/components/Newsletter";
 import { LatestCodes } from "@/components/LatestCodes";
 import { stores, getAllCoupons, LAST_UPDATED } from "@/lib/store-data";
+// @ts-expect-error blog-data types
+import { getLatestPosts } from "@/lib/blog-data";
 import { Search, ExternalLink } from "lucide-react";
 
 export function HomeContent() {
   const allCoupons = getAllCoupons();
   const topCoupons = stores.map((s) => s.coupons[0]);
+  const latestBlogPosts = getLatestPosts(3);
 
   const homeFaq = [
     {
@@ -273,6 +276,55 @@ export function HomeContent() {
               </h2>
               <FaqAccordion items={homeFaq} />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Latest Blog Posts */}
+      <section className="py-14 bg-gray-50" aria-label="Latest Blog Posts">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h2 className="text-2xl font-extrabold text-emerald-800">Latest Savings Tips</h2>
+              <p className="text-sm text-gray-500 mt-1">Expert guides to help you save more on Noon</p>
+            </div>
+            <Link href="/blog" className="text-sm text-emerald-600 hover:text-emerald-800 font-semibold no-underline hover:underline">
+              View All &rarr;
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {latestBlogPosts.map((post: { slug: string; title: string; description: string; date: string; featuredCode: string | null; category: string }) => (
+              <Link key={post.slug} href={`/blog/${post.slug}`} className="group no-underline">
+                <div className="bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-emerald-400 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full flex flex-col">
+                  <div className="bg-emerald-800 text-white px-4 py-2.5 flex items-center justify-between">
+                    <span className="text-xs font-semibold uppercase tracking-wide">
+                      {post.category.replace(/-/g, " ")}
+                    </span>
+                    <time className="text-xs opacity-80">
+                      {new Date(post.date).toLocaleDateString("en-GB", { day: "numeric", month: "short" })}
+                    </time>
+                  </div>
+                  <div className="p-5 flex flex-col flex-1">
+                    <h3 className="font-bold text-gray-900 mb-2 group-hover:text-emerald-700 transition-colors leading-snug text-base">
+                      {post.title}
+                    </h3>
+                    <p className="text-sm text-gray-500 leading-relaxed flex-1 line-clamp-3">
+                      {post.description}
+                    </p>
+                    <div className="mt-3 flex items-center gap-2">
+                      {post.featuredCode && (
+                        <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                          {post.featuredCode}
+                        </span>
+                      )}
+                      <span className="text-xs text-emerald-600 font-semibold group-hover:underline">
+                        Read more &rarr;
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

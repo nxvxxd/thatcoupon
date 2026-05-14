@@ -1,10 +1,19 @@
 import type { MetadataRoute } from "next";
+// @ts-expect-error blog-data types
+import { blogPosts } from "@/lib/blog-data";
 
 const BASE_URL = "https://thatcoupon.com";
 
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const blogUrls = blogPosts.map((post: { slug: string; date: string }) => ({
+    url: `${BASE_URL}/blog/${post.slug}`,
+    lastModified: new Date(post.date),
+    changeFrequency: "weekly" as const,
+    priority: 0.7,
+  }));
+
   return [
     // Homepage
     {
@@ -12,6 +21,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 1.0,
+    },
+    // Blog listing
+    {
+      url: `${BASE_URL}/blog`,
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.8,
     },
     // Store pages
     {
@@ -82,5 +98,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.7,
     },
+    // Blog posts
+    ...blogUrls,
   ];
 }
