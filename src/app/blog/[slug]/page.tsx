@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: post.title,
     description: post.description,
     keywords: post.keywords,
-    alternates: { canonical: `${SITE_URL}/blog/${post.slug}` },
+    alternates: { canonical: `${SITE_URL}/blog/${post.slug}/` },
     openGraph: {
       title: post.title,
       description: post.description,
@@ -46,7 +46,7 @@ export default async function BlogPostPage({ params }: Props) {
       <main className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-2">Post Not Found</h1>
-          <Link href="/blog" className="text-emerald-600 hover:underline">
+          <Link href="/blog/" className="text-emerald-600 hover:underline">
             &larr; Back to Blog
           </Link>
         </div>
@@ -140,7 +140,7 @@ export default async function BlogPostPage({ params }: Props) {
           <div className="flex items-center gap-2 text-sm opacity-80 mb-4">
             <Link href="/" className="hover:text-white no-underline text-white/80 hover:text-white">Home</Link>
             <span>/</span>
-            <Link href="/blog" className="hover:text-white no-underline text-white/80 hover:text-white">Blog</Link>
+            <Link href="/blog/" className="hover:text-white no-underline text-white/80 hover:text-white">Blog</Link>
             <span>/</span>
             <span className="text-amber-300">{categoryName}</span>
           </div>
@@ -284,7 +284,7 @@ export default async function BlogPostPage({ params }: Props) {
                     {relatedPosts.map((rp: { slug: string; title: string; date: string }) => (
                       <Link
                         key={rp.slug}
-                        href={`/blog/${rp.slug}`}
+                        href={`/blog/${rp.slug}/`}
                         className="block no-underline group"
                       >
                         <h4 className="text-sm font-semibold text-gray-800 group-hover:text-emerald-700 transition-colors leading-snug">
@@ -301,7 +301,7 @@ export default async function BlogPostPage({ params }: Props) {
 
               {/* Back to Blog */}
               <Link
-                href="/blog"
+                href="/blog/"
                 className="block text-center bg-gray-100 text-gray-700 font-semibold text-sm px-4 py-3 rounded-xl hover:bg-gray-200 transition-colors no-underline"
               >
                 &larr; All Articles

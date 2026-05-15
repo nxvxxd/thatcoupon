@@ -34,7 +34,6 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
       <head>
-        <base href="https://thatcoupon.com/" />
         <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="" />

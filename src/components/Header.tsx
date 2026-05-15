@@ -23,19 +23,19 @@ export function Header() {
           </Link>
 
           <nav className="hidden md:flex items-center gap-6">
-            <Link href="/stores" className="text-sm font-medium text-gray-600 hover:text-emerald-700 transition-colors">
+            <Link href="/stores/" className="text-sm font-medium text-gray-600 hover:text-emerald-700 transition-colors">
               All Stores
             </Link>
-            <Link href="/categories/fashion" className="text-sm font-medium text-gray-600 hover:text-emerald-700 transition-colors">
+            <Link href="/categories/fashion/" className="text-sm font-medium text-gray-600 hover:text-emerald-700 transition-colors">
               Fashion
             </Link>
-            <Link href="/categories/electronics" className="text-sm font-medium text-gray-600 hover:text-emerald-700 transition-colors">
+            <Link href="/categories/electronics/" className="text-sm font-medium text-gray-600 hover:text-emerald-700 transition-colors">
               Electronics
             </Link>
-            <Link href="/about" className="text-sm font-medium text-gray-600 hover:text-emerald-700 transition-colors">
+            <Link href="/about/" className="text-sm font-medium text-gray-600 hover:text-emerald-700 transition-colors">
               About
             </Link>
-            <Link href="/blog" className="text-sm font-medium text-gray-600 hover:text-emerald-700 transition-colors">
+            <Link href="/blog/" className="text-sm font-medium text-gray-600 hover:text-emerald-700 transition-colors">
               Blog
             </Link>
           </nav>
@@ -57,11 +57,11 @@ export function Header() {
 
         {mobileOpen && (
           <nav className="md:hidden pb-4 border-t border-gray-100 pt-4 flex flex-col gap-3">
-            <Link href="/stores" className="text-sm font-medium text-gray-600 hover:text-emerald-700" onClick={() => setMobileOpen(false)}>All Stores</Link>
-            <Link href="/categories/fashion" className="text-sm font-medium text-gray-600 hover:text-emerald-700" onClick={() => setMobileOpen(false)}>Fashion</Link>
-            <Link href="/categories/electronics" className="text-sm font-medium text-gray-600 hover:text-emerald-700" onClick={() => setMobileOpen(false)}>Electronics</Link>
-            <Link href="/about" className="text-sm font-medium text-gray-600 hover:text-emerald-700" onClick={() => setMobileOpen(false)}>About</Link>
-            <Link href="/blog" className="text-sm font-medium text-gray-600 hover:text-emerald-700" onClick={() => setMobileOpen(false)}>Blog</Link>
+            <Link href="/stores/" className="text-sm font-medium text-gray-600 hover:text-emerald-700" onClick={() => setMobileOpen(false)}>All Stores</Link>
+            <Link href="/categories/fashion/" className="text-sm font-medium text-gray-600 hover:text-emerald-700" onClick={() => setMobileOpen(false)}>Fashion</Link>
+            <Link href="/categories/electronics/" className="text-sm font-medium text-gray-600 hover:text-emerald-700" onClick={() => setMobileOpen(false)}>Electronics</Link>
+            <Link href="/about/" className="text-sm font-medium text-gray-600 hover:text-emerald-700" onClick={() => setMobileOpen(false)}>About</Link>
+            <Link href="/blog/" className="text-sm font-medium text-gray-600 hover:text-emerald-700" onClick={() => setMobileOpen(false)}>Blog</Link>
           </nav>
         )}
       </div>

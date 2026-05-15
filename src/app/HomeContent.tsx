@@ -10,7 +10,7 @@ import { LatestCodes } from "@/components/LatestCodes";
 import { stores, getAllCoupons, LAST_UPDATED } from "@/lib/store-data";
 // @ts-expect-error blog-data types
 import { getLatestPosts } from "@/lib/blog-data";
-import { Search, ExternalLink } from "lucide-react";
+import { BookOpen, ArrowRight } from "lucide-react";
 
 export function HomeContent() {
   const allCoupons = getAllCoupons();
@@ -87,7 +87,7 @@ export function HomeContent() {
               {topCoupons.map((c) => (
                 <Link
                   key={c.id}
-                  href={`/${c.storeSlug}`}
+                  href={`/${c.storeSlug}/`}
                   className="bg-white/12 backdrop-blur-sm border border-white/15 rounded-xl px-4 py-3 flex items-center gap-3 min-w-[160px] cursor-pointer transition-all hover:bg-white/22 hover:-translate-y-0.5 no-underline text-white"
                 >
                   <div
@@ -126,10 +126,10 @@ export function HomeContent() {
             {stores.map((store) => (
               <Link
                 key={store.slug}
-                href={`/${store.slug}`}
+                href={`/${store.slug}/`}
                 className="text-sm text-emerald-700 hover:text-emerald-900 font-medium underline underline-offset-4 transition-colors no-underline hover:underline"
               >
-                View all {store.name} coupons →
+                View all {store.name} coupons &rarr;
               </Link>
             ))}
           </div>
@@ -158,6 +158,67 @@ export function HomeContent() {
                 logoColor={coupon.logoColor}
               />
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Latest Blog Posts - Above Latest Savings Tips */}
+      <section className="py-14 bg-white" aria-label="Latest Blog Posts">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center">
+                <BookOpen className="w-5 h-5 text-emerald-700" />
+              </div>
+              <div>
+                <h2 className="text-2xl font-extrabold text-emerald-800">Latest Blog Posts</h2>
+                <p className="text-sm text-gray-500 mt-0.5">Savings tips, deals & shopping guides</p>
+              </div>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {latestBlogPosts.map((post: { slug: string; title: string; description: string; date: string; featuredCode: string | null; category: string }) => (
+              <Link key={post.slug} href={`/blog/${post.slug}/`} className="group no-underline">
+                <div className="bg-gray-50 rounded-2xl overflow-hidden border-2 border-transparent hover:border-emerald-400 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full flex flex-col">
+                  <div className="bg-gradient-to-r from-emerald-800 to-emerald-600 text-white px-4 py-3 flex items-center justify-between">
+                    <span className="text-xs font-semibold uppercase tracking-wide">
+                      {post.category.replace(/-/g, " ")}
+                    </span>
+                    <time className="text-xs opacity-80">
+                      {new Date(post.date).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
+                    </time>
+                  </div>
+                  <div className="p-5 flex flex-col flex-1">
+                    <h3 className="font-bold text-gray-900 mb-2 group-hover:text-emerald-700 transition-colors leading-snug text-base">
+                      {post.title}
+                    </h3>
+                    <p className="text-sm text-gray-500 leading-relaxed flex-1 line-clamp-3">
+                      {post.description}
+                    </p>
+                    <div className="mt-4 flex items-center gap-2">
+                      {post.featuredCode && (
+                        <span className="inline-flex items-center gap-1 bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-1 rounded-full">
+                          {post.featuredCode}
+                        </span>
+                      )}
+                      <span className="text-xs text-emerald-600 font-semibold group-hover:underline">
+                        Read more &rarr;
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+          {/* Read Blog Button */}
+          <div className="mt-8 text-center">
+            <Link
+              href="/blog/"
+              className="inline-flex items-center gap-2 bg-emerald-800 hover:bg-emerald-700 text-white font-bold text-sm px-8 py-3.5 rounded-full transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 no-underline"
+            >
+              Read Our Blog
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </section>
@@ -210,8 +271,8 @@ export function HomeContent() {
                 purchases.
               </p>
               <p className="text-xs text-gray-400 mb-4">
-                Last updated: {LAST_UPDATED} •{" "}
-                <Link href="/noon-coupon-code" className="text-emerald-600 hover:text-emerald-800 no-underline underline">
+                Last updated: {LAST_UPDATED} &bull;{" "}
+                <Link href="/noon-coupon-code/" className="text-emerald-600 hover:text-emerald-800 no-underline underline">
                   View all Noon coupons
                 </Link>
               </p>
@@ -228,8 +289,8 @@ export function HomeContent() {
                 items, including sneakers, dresses, activewear, and beauty products.
               </p>
               <p className="text-xs text-gray-400 mb-4">
-                Last updated: {LAST_UPDATED} •{" "}
-                <Link href="/namshi-coupon-code" className="text-emerald-600 hover:text-emerald-800 no-underline underline">
+                Last updated: {LAST_UPDATED} &bull;{" "}
+                <Link href="/namshi-coupon-code/" className="text-emerald-600 hover:text-emerald-800 no-underline underline">
                   View all Namshi coupons
                 </Link>
               </p>
@@ -245,8 +306,8 @@ export function HomeContent() {
                 on your entire order, stacking on top of their already competitive prices.
               </p>
               <p className="text-xs text-gray-400 mb-4">
-                Last updated: {LAST_UPDATED} •{" "}
-                <Link href="/shosh-arab-coupon-code" className="text-emerald-600 hover:text-emerald-800 no-underline underline">
+                Last updated: {LAST_UPDATED} &bull;{" "}
+                <Link href="/shosh-arab-coupon-code/" className="text-emerald-600 hover:text-emerald-800 no-underline underline">
                   View all Shosh Arab coupons
                 </Link>
               </p>
@@ -262,8 +323,8 @@ export function HomeContent() {
                 available at Bloomingdale&apos;s UAE.
               </p>
               <p className="text-xs text-gray-400 mb-4">
-                Last updated: {LAST_UPDATED} •{" "}
-                <Link href="/bloomingdales-uae-coupon" className="text-emerald-600 hover:text-emerald-800 no-underline underline">
+                Last updated: {LAST_UPDATED} &bull;{" "}
+                <Link href="/bloomingdales-uae-coupon/" className="text-emerald-600 hover:text-emerald-800 no-underline underline">
                   View all Bloomingdale&apos;s coupons
                 </Link>
               </p>
@@ -276,55 +337,6 @@ export function HomeContent() {
               </h2>
               <FaqAccordion items={homeFaq} />
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Latest Blog Posts */}
-      <section className="py-14 bg-gray-50" aria-label="Latest Blog Posts">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <h2 className="text-2xl font-extrabold text-emerald-800">Latest Savings Tips</h2>
-              <p className="text-sm text-gray-500 mt-1">Expert guides to help you save more on Noon</p>
-            </div>
-            <Link href="/blog" className="text-sm text-emerald-600 hover:text-emerald-800 font-semibold no-underline hover:underline">
-              View All &rarr;
-            </Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {latestBlogPosts.map((post: { slug: string; title: string; description: string; date: string; featuredCode: string | null; category: string }) => (
-              <Link key={post.slug} href={`/blog/${post.slug}`} className="group no-underline">
-                <div className="bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-emerald-400 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full flex flex-col">
-                  <div className="bg-emerald-800 text-white px-4 py-2.5 flex items-center justify-between">
-                    <span className="text-xs font-semibold uppercase tracking-wide">
-                      {post.category.replace(/-/g, " ")}
-                    </span>
-                    <time className="text-xs opacity-80">
-                      {new Date(post.date).toLocaleDateString("en-GB", { day: "numeric", month: "short" })}
-                    </time>
-                  </div>
-                  <div className="p-5 flex flex-col flex-1">
-                    <h3 className="font-bold text-gray-900 mb-2 group-hover:text-emerald-700 transition-colors leading-snug text-base">
-                      {post.title}
-                    </h3>
-                    <p className="text-sm text-gray-500 leading-relaxed flex-1 line-clamp-3">
-                      {post.description}
-                    </p>
-                    <div className="mt-3 flex items-center gap-2">
-                      {post.featuredCode && (
-                        <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
-                          {post.featuredCode}
-                        </span>
-                      )}
-                      <span className="text-xs text-emerald-600 font-semibold group-hover:underline">
-                        Read more &rarr;
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            ))}
           </div>
         </div>
       </section>

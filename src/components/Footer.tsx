@@ -38,7 +38,7 @@ export function Footer() {
             <ul className="space-y-2">
               {stores.map(store => (
                 <li key={store.slug}>
-                  <Link href={`/${store.slug}`} className="text-gray-400 text-sm hover:text-white transition-colors no-underline">
+                  <Link href={`/${store.slug}/`} className="text-gray-400 text-sm hover:text-white transition-colors no-underline">
                     {store.name} Coupons
                   </Link>
                 </li>
@@ -49,10 +49,10 @@ export function Footer() {
           <div>
             <h3 className="text-base font-bold mb-4">Support</h3>
             <ul className="space-y-2">
-              <li><Link href="/about" className="text-gray-400 text-sm hover:text-white transition-colors no-underline">About Us</Link></li>
-              <li><Link href="/contact" className="text-gray-400 text-sm hover:text-white transition-colors no-underline">Contact Us</Link></li>
-              <li><Link href="/privacy-policy" className="text-gray-400 text-sm hover:text-white transition-colors no-underline">Privacy Policy</Link></li>
-              <li><Link href="/terms" className="text-gray-400 text-sm hover:text-white transition-colors no-underline">Terms of Service</Link></li>
+              <li><Link href="/about/" className="text-gray-400 text-sm hover:text-white transition-colors no-underline">About Us</Link></li>
+              <li><Link href="/contact/" className="text-gray-400 text-sm hover:text-white transition-colors no-underline">Contact Us</Link></li>
+              <li><Link href="/privacy-policy/" className="text-gray-400 text-sm hover:text-white transition-colors no-underline">Privacy Policy</Link></li>
+              <li><Link href="/terms/" className="text-gray-400 text-sm hover:text-white transition-colors no-underline">Terms of Service</Link></li>
             </ul>
           </div>
         </div>

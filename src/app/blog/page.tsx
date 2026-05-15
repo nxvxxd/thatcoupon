@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Blog - UAE Coupon Tips, Deals & Savings Guides | That Coupon",
   description:
     "Expert coupon tips, deal guides, and savings strategies for Noon, Namshi, and more in the UAE. Stay updated with the latest promo codes and shopping hacks.",
-  alternates: { canonical: "https://thatcoupon.com/blog" },
+  alternates: { canonical: "https://thatcoupon.com/blog/" },
 };
 
 const categories = Object.entries(blogCategories);
@@ -39,7 +39,7 @@ export default function BlogPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {latestPosts.map((post) => (
             <article key={post.slug} className="group">
-              <Link href={`/blog/${post.slug}`} className="block no-underline">
+              <Link href={`/blog/${post.slug}/`} className="block no-underline">
                 <div className="bg-gray-50 rounded-2xl overflow-hidden border-2 border-transparent hover:border-emerald-400 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl h-full flex flex-col">
                   <div className="bg-emerald-800 text-white px-5 py-3 flex items-center justify-between">
                     <span className="text-xs font-semibold uppercase tracking-wide">
@@ -120,7 +120,7 @@ export default function BlogPage() {
                 {catPosts.map((post: { slug: string; title: string; date: string; description: string; featuredCode: string | null }) => (
                   <Link
                     key={post.slug}
-                    href={`/blog/${post.slug}`}
+                    href={`/blog/${post.slug}/`}
                     className="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors no-underline group"
                   >
                     <div className="flex-1 min-w-0">
