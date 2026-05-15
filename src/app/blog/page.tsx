@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { stores } from "@/lib/store-data";
-import { SITE_NAME } from "@/lib/store-data";
+import { stores, SITE_NAME, SITE_URL } from "@/lib/store-data";
 // @ts-expect-error blog-data types
 import { blogPosts as allBlogPosts, getLatestPosts, blogCategories } from "@/lib/blog-data";
 
@@ -9,21 +8,67 @@ export const metadata: Metadata = {
   title: "Blog - UAE Coupon Tips, Deals & Savings Guides | That Coupon",
   description:
     "Expert coupon tips, deal guides, and savings strategies for Noon, Namshi, and more in the UAE. Stay updated with the latest promo codes and shopping hacks.",
-  alternates: { canonical: "https://thatcoupon.com/blog/" },
+  alternates: { canonical: `${SITE_URL}/blog/` },
+  openGraph: {
+    title: "Blog - UAE Coupon Tips, Deals & Savings Guides | That Coupon",
+    description:
+      "Expert coupon tips, deal guides, and savings strategies for Noon, Namshi, and more in the UAE. Updated daily.",
+    url: `${SITE_URL}/blog/`,
+    type: "website",
+    siteName: SITE_NAME,
+  },
 };
 
 const categories = Object.entries(blogCategories);
+
+// Build schema data
+const blogItemList = allBlogPosts.map((post: { slug: string; title: string; date: string; description: string }, index: number) => ({
+  "@type": "ListItem",
+  position: index + 1,
+  name: post.title,
+  url: `${SITE_URL}/blog/${post.slug}/`,
+  description: post.description,
+}));
 
 export default function BlogPage() {
   const latestPosts = getLatestPosts(6);
 
   return (
     <main className="min-h-screen bg-white">
+      {/* BreadcrumbList Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL + "/" },
+              { "@type": "ListItem", position: 2, name: "Blog", item: SITE_URL + "/blog/" },
+            ],
+          }),
+        }}
+      />
+      {/* ItemList Schema - all blog posts for Google to index */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            name: "UAE Coupon Tips & Savings Guides",
+            description: "Expert coupon tips, deal guides, and savings strategies for Noon, Namshi, and more in the UAE.",
+            numberOfItems: allBlogPosts.length,
+            itemListElement: blogItemList,
+          }),
+        }}
+      />
+
       {/* Hero */}
       <section className="bg-gradient-to-br from-emerald-900 via-emerald-800 to-emerald-700 py-14 text-white">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <h1 className="text-3xl md:text-4xl font-extrabold mb-3 tracking-tight">
-            Coupon Tips & Savings Guides
+            Coupon Tips &amp; Savings Guides
           </h1>
           <p className="text-lg opacity-90 max-w-xl mx-auto">
             Expert advice on saving money with coupon codes in the UAE. Updated daily by our team.

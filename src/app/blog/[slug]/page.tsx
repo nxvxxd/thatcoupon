@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: post.description,
       type: "article",
       publishedTime: post.date,
-      url: `${SITE_URL}/blog/${post.slug}`,
+      url: `${SITE_URL}/blog/${post.slug}/`,
     },
   };
 }
@@ -62,7 +62,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <main className="min-h-screen bg-white">
-      {/* Schema */}
+      {/* BlogPosting Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -73,22 +73,26 @@ export default async function BlogPostPage({ params }: Props) {
             description: post.description,
             datePublished: post.date,
             dateModified: post.date,
+            image: `${SITE_URL}/logo.svg`,
             author: {
               "@type": "Organization",
               name: SITE_NAME,
-              url: SITE_URL,
+              url: SITE_URL + "/",
             },
             publisher: {
               "@type": "Organization",
               name: SITE_NAME,
-              url: SITE_URL,
+              url: SITE_URL + "/",
+              logo: {
+                "@type": "ImageObject",
+                url: `${SITE_URL}/logo.svg`,
+              },
             },
             mainEntityOfPage: {
               "@type": "WebPage",
-              "@id": `${SITE_URL}/blog/${post.slug}`,
+              "@id": `${SITE_URL}/blog/${post.slug}/`,
             },
             ...(post.schemaFaq?.length > 0 && {
-              "@type": "FAQPage",
               mainEntity: post.schemaFaq.map((faq: { question: string; answer: string }) => ({
                 "@type": "Question",
                 name: faq.question,
@@ -101,7 +105,7 @@ export default async function BlogPostPage({ params }: Props) {
           }),
         }}
       />
-      {/* Separate FAQ Schema */}
+      {/* FAQPage Schema (separate block) */}
       {post.schemaFaq?.length > 0 && (
         <script
           type="application/ld+json"
@@ -118,7 +122,7 @@ export default async function BlogPostPage({ params }: Props) {
           }}
         />
       )}
-      {/* Breadcrumb Schema */}
+      {/* BreadcrumbList Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -127,8 +131,9 @@ export default async function BlogPostPage({ params }: Props) {
             "@type": "BreadcrumbList",
             itemListElement: [
               { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL + "/" },
-              { "@type": "ListItem", position: 2, name: "Blog", item: SITE_URL + "/blog" },
-              { "@type": "ListItem", position: 3, name: post.title, item: `${SITE_URL}/blog/${post.slug}` },
+              { "@type": "ListItem", position: 2, name: "Blog", item: SITE_URL + "/blog/" },
+              { "@type": "ListItem", position: 3, name: categoryName, item: `${SITE_URL}/blog/` },
+              { "@type": "ListItem", position: 4, name: post.title, item: `${SITE_URL}/blog/${post.slug}/` },
             ],
           }),
         }}
