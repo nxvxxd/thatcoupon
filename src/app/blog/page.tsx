@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { stores, SITE_NAME, SITE_URL } from "@/lib/store-data";
 // @ts-expect-error blog-data types
 import { blogPosts as allBlogPosts, getLatestPosts, blogCategories } from "@/lib/blog-data";
@@ -34,7 +36,9 @@ export default function BlogPage() {
   const latestPosts = getLatestPosts(6);
 
   return (
-    <main className="min-h-screen bg-white">
+    <>
+      <Header />
+      <main className="min-h-screen bg-white">
       {/* BreadcrumbList Schema */}
       <script
         type="application/ld+json"
@@ -191,6 +195,8 @@ export default function BlogPage() {
           );
         })}
       </section>
-    </main>
+      </main>
+      <Footer />
+    </>
   );
 }
