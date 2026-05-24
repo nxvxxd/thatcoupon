@@ -12,12 +12,12 @@ export const metadata: Metadata = {
     title: "Privacy Policy – That Coupon",
     description:
       "Read the That Coupon Privacy Policy to understand how we collect, use, and protect your personal information.",
-    url: `${SITE_URL}/privacy-policy`,
+    url: `${SITE_URL}/privacy-policy/`,
     siteName: SITE_NAME,
     type: "website",
   },
   alternates: {
-    canonical: `${SITE_URL}/privacy-policy`,
+    canonical: `${SITE_URL}/privacy-policy/`,
   },
 };
 

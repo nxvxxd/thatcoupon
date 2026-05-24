@@ -70,8 +70,11 @@ export function StorePageContent({ store }: StorePageContentProps) {
           <h2 className="text-2xl font-extrabold text-emerald-800 mb-2">
             {store.name} Coupon Codes &amp; Offers
           </h2>
-          <p className="text-sm text-gray-500 mb-6">
+          <p className="text-sm text-gray-500 mb-2">
             Verified and tested today. Copy any code below and apply it at checkout to save instantly.
+          </p>
+          <p className="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 mb-6">
+            <strong>Disclosure:</strong> We may earn a commission when you use our coupon codes. This never affects our recommendations — we only list verified, working codes.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {store.coupons.map((coupon) => (

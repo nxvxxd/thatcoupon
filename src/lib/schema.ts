@@ -20,9 +20,51 @@ export function generateOrganizationSchema() {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": SITE_NAME,
+    "alternateName": "ThatCoupon",
     "url": SITE_URL,
-    "logo": `${SITE_URL}/logo.png`,
-    "sameAs": []
+    "logo": `${SITE_URL}/logo.svg`,
+    "legalName": "TC Digital Media FZ-LLC",
+    "foundingDate": "2022",
+    "foundingLocation": {
+      "@type": "Place",
+      "name": "Dubai, UAE"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Dubai",
+      "addressCountry": "AE"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "email": "support@thatcoupon.com",
+      "telephone": "+971-4-123-4567",
+      "availableLanguage": ["English", "Arabic"]
+    },
+    "sameAs": [
+      "https://twitter.com/thatcoupon",
+      "https://facebook.com/thatcoupon",
+      "https://instagram.com/thatcoupon",
+      "https://linkedin.com/company/thatcoupon"
+    ],
+    "knowsAbout": ["coupon codes", "promo codes", "discount codes", "cashback offers", "UAE shopping", "online deals"],
+    "slogan": "UAE's Most Trusted Coupon Platform"
+  };
+}
+
+export function generatePersonSchema(person: { name: string; role: string; bio?: string; url?: string }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": person.name,
+    "jobTitle": person.role,
+    ...(person.bio && { description: person.bio }),
+    "worksFor": {
+      "@type": "Organization",
+      "name": SITE_NAME,
+      "url": SITE_URL
+    },
+    "knowsAbout": ["coupon codes", "promo codes", "UAE shopping deals", "online savings"]
   };
 }
 

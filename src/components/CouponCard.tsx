@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useCopyCode } from "./hooks";
-import { ExternalLink, Flame, Sparkles, Coins, Percent } from "lucide-react";
+import { ExternalLink, Flame, Sparkles, Coins, Percent, CheckCircle2 } from "lucide-react";
 
 interface CouponCardProps {
   id: string;
@@ -90,6 +90,10 @@ export function CouponCard({
         >
           Shop {store} <ExternalLink className="w-3 h-3" />
         </a>
+        <div className="flex items-center gap-1 text-[10px] text-gray-400 mt-1">
+          <CheckCircle2 className="w-3 h-3 text-emerald-500" />
+          <span>Verified {new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short" })}</span>
+        </div>
       </div>
     </article>
   );

@@ -67,8 +67,31 @@ const teamMembers = [
 ];
 
 export default function TeamPage() {
+  const teamSchema = teamMembers.map(member => ({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": member.name,
+    "jobTitle": member.role,
+    "description": member.bio,
+    "worksFor": {
+      "@type": "Organization",
+      "name": SITE_NAME,
+      "url": SITE_URL,
+      "logo": `${SITE_URL}/logo.svg`
+    },
+    "knowsAbout": ["coupon codes", "promo codes", "UAE shopping", "online savings"]
+  }));
+
   return (
     <div className="min-h-screen flex flex-col">
+      {/* Person Schema for each team member */}
+      {teamSchema.map((schema, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
       <Header />
 
       <main className="flex-1 bg-white">

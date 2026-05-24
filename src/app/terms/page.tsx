@@ -12,12 +12,12 @@ export const metadata: Metadata = {
     title: "Terms of Service – That Coupon",
     description:
       "Read the That Coupon Terms of Service to understand the rules and conditions governing your use of our coupon platform.",
-    url: `${SITE_URL}/terms`,
+    url: `${SITE_URL}/terms/`,
     siteName: SITE_NAME,
     type: "website",
   },
   alternates: {
-    canonical: `${SITE_URL}/terms`,
+    canonical: `${SITE_URL}/terms/`,
   },
 };
 

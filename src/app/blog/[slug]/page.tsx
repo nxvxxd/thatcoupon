@@ -76,12 +76,18 @@ export default async function BlogPostPage({ params }: Props) {
             headline: post.title,
             description: post.description,
             datePublished: post.date,
-            dateModified: post.date,
+            dateModified: new Date().toISOString().split('T')[0],
             image: `${SITE_URL}/logo.svg`,
             author: {
-              "@type": "Organization",
-              name: SITE_NAME,
-              url: SITE_URL + "/",
+              "@type": "Person",
+              "name": "Sarah Mitchell",
+              "jobTitle": "Head of Content & SEO",
+              "url": `${SITE_URL}/team/`,
+              "worksFor": {
+                "@type": "Organization",
+                "name": SITE_NAME,
+                "url": SITE_URL,
+              },
             },
             publisher: {
               "@type": "Organization",
@@ -161,7 +167,9 @@ export default async function BlogPostPage({ params }: Props) {
               {new Date(post.date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}
             </time>
             <span className="w-1 h-1 bg-white/50 rounded-full" />
-            <span>{SITE_NAME}</span>
+            <span>By <a href="/team/" className="hover:underline text-white">Sarah Mitchell</a></span>
+            <span className="w-1 h-1 bg-white/50 rounded-full" />
+            <span>Head of Content &amp; SEO</span>
             {post.featuredCode && (
               <>
                 <span className="w-1 h-1 bg-white/50 rounded-full" />
@@ -239,6 +247,26 @@ export default async function BlogPostPage({ params }: Props) {
                 </a>
               </div>
             )}
+
+            {/* Affiliate Disclosure */}
+            <div className="mt-10 bg-amber-50 border border-amber-200 rounded-xl p-5">
+              <p className="text-xs text-amber-800 leading-relaxed">
+                <strong>Disclosure:</strong> That Coupon may earn a commission when you click on links and make purchases. This does not affect our editorial integrity — we only recommend verified codes that provide real value. See our <a href="/privacy-policy/" className="underline hover:text-amber-900">Privacy Policy</a> and <a href="/terms/" className="underline hover:text-amber-900">Terms of Service</a> for details.
+              </p>
+            </div>
+
+            {/* Author Bio */}
+            <div className="mt-8 bg-gray-50 border border-gray-200 rounded-xl p-6 flex gap-4 items-start">
+              <div className="flex-shrink-0 w-14 h-14 rounded-full bg-gradient-to-br from-teal-600 to-emerald-800 flex items-center justify-center">
+                <span className="text-white font-bold text-lg">SM</span>
+              </div>
+              <div>
+                <h3 className="font-bold text-gray-900">Sarah Mitchell</h3>
+                <p className="text-emerald-700 text-sm font-medium">Head of Content &amp; SEO</p>
+                <p className="text-gray-600 text-sm leading-relaxed mt-2">Sarah brings over 10 years of content strategy and SEO experience. She leads the editorial team at That Coupon, creating savings guides and deal roundups that help UAE shoppers make informed decisions and save money on every purchase.</p>
+                <a href="/team/" className="inline-block mt-2 text-sm text-emerald-700 font-semibold hover:underline">Meet the full team &rarr;</a>
+              </div>
+            </div>
 
             {/* FAQ Section */}
             {post.schemaFaq && post.schemaFaq.length > 0 && (
