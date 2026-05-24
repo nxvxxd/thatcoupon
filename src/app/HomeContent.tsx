@@ -202,7 +202,7 @@ export function HomeContent() {
                         </span>
                       )}
                       <span className="text-xs text-emerald-600 font-semibold group-hover:underline">
-                        Read more &rarr;
+                        View full guide &rarr;
                       </span>
                     </div>
                   </div>

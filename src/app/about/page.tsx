@@ -21,12 +21,12 @@ export const metadata: Metadata = {
     title: "About That Coupon – UAE's Trusted Coupon Platform",
     description:
       "Learn about That Coupon, the UAE's most trusted coupon and cashback platform. Discover our mission to help shoppers save money with verified promo codes.",
-    url: `${SITE_URL}/about`,
+    url: `${SITE_URL}/about/`,
     siteName: SITE_NAME,
     type: "website",
   },
   alternates: {
-    canonical: `${SITE_URL}/about`,
+    canonical: `${SITE_URL}/about/`,
   },
 };
 
@@ -49,6 +49,16 @@ export default function AboutPage() {
               day with verified, tested promo codes.
             </p>
           </div>
+        </section>
+
+        {/* What We Do */}
+        <section className="max-w-4xl mx-auto px-4 py-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+            What We Do
+          </h2>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            At {SITE_NAME}, we specialise in finding, testing, and publishing verified coupon codes and cashback offers for the most popular online stores in the UAE and GCC region. Our services include daily code verification across more than 100 partner stores, in-depth savings guides and shopping tips published on our blog, price monitoring during major sale events like Ramadan, Eid, and Yellow Friday, and personalised deal alerts for our community of over 200,000 monthly shoppers. We work directly with retailers including Noon, Namshi, Shosh Arab, and Bloomingdale&apos;s UAE to bring you exclusive discounts that you will not find anywhere else.
+          </p>
         </section>
 
         {/* Our Story */}
@@ -290,11 +300,23 @@ export default function AboutPage() {
             on your next purchase. No sign-up required.
           </p>
           <Link
-            href="/stores"
+            href="/stores/"
             className="inline-flex items-center gap-2 bg-emerald-700 hover:bg-emerald-800 text-white font-semibold px-8 py-3 rounded-lg transition-colors"
           >
             Browse All Stores
           </Link>
+        </section>
+
+        {/* Parent Company */}
+        <section className="bg-gray-50 py-12">
+          <div className="max-w-4xl mx-auto px-4 text-center">
+            <h2 className="text-xl font-bold text-gray-900 mb-3">Operated by TC Digital Media FZ-LLC</h2>
+            <p className="text-gray-600 text-sm leading-relaxed max-w-2xl mx-auto">
+              That Coupon is operated by TC Digital Media FZ-LLC, a digital media company registered in Dubai, UAE.
+              Our mission is to help consumers make smarter purchasing decisions across the Middle East by providing
+              accurate, verified, and up-to-date coupon codes and savings guides.
+            </p>
+          </div>
         </section>
       </main>
 

@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { GTMProvider } from "@/components/GTMProvider";
+import { BackToTop } from "@/components/BackToTop";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,6 +33,22 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const siteNavigationSchema = {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    name: "That Coupon Navigation",
+    url: "https://thatcoupon.com/",
+    hasPart: [
+      { "@type": "WebPage", name: "All Stores", url: "https://thatcoupon.com/stores/" },
+      { "@type": "WebPage", name: "Fashion Deals", url: "https://thatcoupon.com/categories/fashion/" },
+      { "@type": "WebPage", name: "Electronics Deals", url: "https://thatcoupon.com/categories/electronics/" },
+      { "@type": "WebPage", name: "Blog", url: "https://thatcoupon.com/blog/" },
+      { "@type": "WebPage", name: "About Us", url: "https://thatcoupon.com/about/" },
+      { "@type": "WebPage", name: "Contact Us", url: "https://thatcoupon.com/contact/" },
+      { "@type": "WebPage", name: "Our Team", url: "https://thatcoupon.com/team/" },
+    ],
+  };
+
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
       <head>
@@ -42,6 +59,12 @@ export default function RootLayout({
         {/* Hreflang for GCC */}
         <link rel="alternate" hreflang="en-AE" href="https://thatcoupon.com/?country=uae" />
         <link rel="alternate" hreflang="en-SA" href="https://thatcoupon.com/?country=ksa" />
+
+        {/* SiteNavigation Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteNavigationSchema) }}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-gray-800`}
@@ -49,6 +72,7 @@ export default function RootLayout({
       >
         <GTMProvider />
         {children}
+        <BackToTop />
         <Toaster />
       </body>
     </html>

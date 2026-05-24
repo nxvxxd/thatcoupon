@@ -112,7 +112,7 @@ export default function BlogPage() {
                         </span>
                       )}
                       <span className="text-xs text-emerald-600 font-semibold group-hover:underline">
-                        Read more &rarr;
+                        View article &rarr;
                       </span>
                     </div>
                   </div>
