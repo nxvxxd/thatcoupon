@@ -11,7 +11,7 @@ export function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-4">
             <div className="flex items-center gap-2.5 mb-5">
-              <img src="/logo.svg" alt="That Coupon" width={36} height={36} className="w-9 h-9 brightness-0 invert" />
+              <img src="/TC-Logo.png" alt="That Coupon" width={36} height={36} className="w-9 h-9 brightness-0 invert" />
               <span className="text-xl font-bold tracking-tight">{SITE_NAME}</span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-sm">

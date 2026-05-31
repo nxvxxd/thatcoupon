@@ -74,7 +74,7 @@ export default async function BlogPostPage({ params }: Props) {
             description: post.description,
             datePublished: post.date,
             dateModified: new Date().toISOString().split('T')[0],
-            image: `${SITE_URL}/logo.svg`,
+            image: `${SITE_URL}/TC-Logo.png`,
             author: {
               "@type": "Person",
               "name": "Sarah Mitchell",
@@ -92,7 +92,7 @@ export default async function BlogPostPage({ params }: Props) {
               url: SITE_URL + "/",
               logo: {
                 "@type": "ImageObject",
-                url: `${SITE_URL}/logo.svg`,
+                url: `${SITE_URL}/TC-Logo.png`,
               },
             },
             mainEntityOfPage: {

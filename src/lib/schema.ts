@@ -22,7 +22,7 @@ export function generateOrganizationSchema() {
     "name": SITE_NAME,
     "alternateName": "ThatCoupon",
     "url": SITE_URL,
-    "logo": `${SITE_URL}/logo.svg`,
+    "logo": `${SITE_URL}/TC-Logo.png`,
     "legalName": "TC Digital Media FZ-LLC",
     "foundingDate": "2022",
     "foundingLocation": {

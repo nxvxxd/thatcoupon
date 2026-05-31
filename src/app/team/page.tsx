@@ -75,7 +75,7 @@ export default function TeamPage() {
       "@type": "Organization",
       "name": SITE_NAME,
       "url": SITE_URL,
-      "logo": `${SITE_URL}/logo.svg`
+      "logo": `${SITE_URL}/TC-Logo.png`
     },
     "knowsAbout": ["coupon codes", "promo codes", "UAE shopping", "online savings"]
   }));

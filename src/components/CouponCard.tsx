@@ -51,31 +51,27 @@ export function CouponCard({
       )}
 
       {/* Top: Store Info */}
-      <div
-        className="px-6 pt-6 pb-4 relative z-[1]"
-        style={{ background: `linear-gradient(135deg, ${cardBg}, ${cardBg}dd)` }}
-      >
+      <div className="px-6 pt-6 pb-4 relative z-[1] bg-white">
         <div className="flex items-center gap-3 mb-3">
           <div
-            className="w-12 h-12 rounded-xl flex items-center justify-center font-extrabold text-[9px] shadow-md shrink-0"
+            className="w-12 h-12 rounded-xl flex items-center justify-center font-extrabold text-[9px] shadow-sm shrink-0"
             style={{ background: logoBg, color: logoColor }}
           >
             {logoText}
           </div>
           <div>
-            <div className="text-xl font-black tracking-tight" style={{ color: cardTextColor }}>
+            <div className="text-xl font-black tracking-tight text-gray-900">
               {store}
             </div>
             <div
-              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold w-fit"
-              style={{ background: badgeColor, color: badgeText }}
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold w-fit bg-emerald-50 text-emerald-800"
             >
-              <BadgeIcon className="w-3 h-3" style={{ color: "#F59E0B" }} />
+              <BadgeIcon className="w-3 h-3 text-amber-500" />
               {badgeLabel}
             </div>
           </div>
         </div>
-        <p className="text-sm opacity-90 leading-relaxed" style={{ color: cardTextColor }}>
+        <p className="text-sm text-gray-600 leading-relaxed">
           {description}
         </p>
       </div>

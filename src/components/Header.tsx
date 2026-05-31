@@ -76,7 +76,7 @@ export function Header() {
           <div className="flex justify-between items-center h-[68px]">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2.5 no-underline group" aria-label="That Coupon Home">
-              <img src="/logo.svg" alt="That Coupon Logo" width={38} height={38} className="w-9 h-9 transition-transform group-hover:scale-105" />
+              <img src="/TC-Logo.png" alt="That Coupon Logo" width={38} height={38} className="w-9 h-9 transition-transform group-hover:scale-105" />
               <span className="text-[22px] font-black tracking-tight bg-gradient-to-br from-emerald-700 via-emerald-600 to-teal-600 bg-clip-text text-transparent">
                 That Coupon
               </span>

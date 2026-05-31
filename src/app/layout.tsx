@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     "The leading coupon and cashback platform in the UAE & GCC. Verified, tested promo codes for Noon, Namshi, Shosh Arab, Bloomingdale's and more. Updated daily.",
   metadataBase: new URL("https://thatcoupon.com"),
   icons: {
-    icon: "https://thatcoupon.com/favicon.ico",
+    icon: "https://thatcoupon.com/TC-Logo.png",
   },
 };
 
