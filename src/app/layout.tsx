@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
@@ -80,6 +81,7 @@ export default function RootLayout({
         </div>
         <BackToTop />
         <Toaster />
+        <Script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js" strategy="afterInteractive" />
       </body>
     </html>
   );

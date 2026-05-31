@@ -99,8 +99,8 @@ export function Footer() {
       {/* Bottom Bar */}
       <div className="border-t border-white/[0.06]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <a href="https://www.dmca.com/Protection/Status.aspx?ID=thatcoupon.com" target="_blank" rel="noopener noreferrer" title="DMCA.com Protection Status" className="inline-block">
-            <img src="https://images.dmca.com/Badges/dmca_protected_sml_120n.png?ID=thatcoupon.com" alt="DMCA.com Protection Status" width="120" height="24" />
+          <a href="//www.dmca.com/Protection/Status.aspx?ID=30505ec8-694f-43b2-b17d-f15451684b4d" title="DMCA.com Protection Status" className="dmca-badge inline-block">
+            <img src="https://images.dmca.com/Badges/dmca-badge-w200-5x1-06.png?ID=30505ec8-694f-43b2-b17d-f15451684b4d" alt="DMCA.com Protection Status" />
           </a>
           <p className="text-gray-500 text-xs">
             &copy; 2026 {SITE_NAME}. All rights reserved. Operated by TC Digital Media FZ-LLC, Dubai, UAE.
