@@ -42,10 +42,9 @@ export function generateOrganizationSchema() {
       "availableLanguage": ["English", "Arabic"]
     },
     "sameAs": [
-      "https://twitter.com/thatcoupon",
-      "https://facebook.com/thatcoupon",
-      "https://instagram.com/thatcoupon",
-      "https://linkedin.com/company/thatcoupon"
+      "https://www.facebook.com/ThatCouponCode",
+      "https://www.instagram.com/nooncashback/",
+      "https://www.reddit.com/r/NoonCashback/"
     ],
     "knowsAbout": ["coupon codes", "promo codes", "discount codes", "cashback offers", "UAE shopping", "online deals"],
     "slogan": "UAE's Most Trusted Coupon Platform"
