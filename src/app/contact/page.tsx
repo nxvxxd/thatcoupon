@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 import { Mail, MessageSquare, User } from "lucide-react";
 import { ContactForm } from "./ContactForm";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -32,10 +30,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-
-      <main className="flex-1 bg-white">
+    <main className="bg-white">
         <section className="bg-gradient-to-br from-emerald-800 to-emerald-600 text-white py-16">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <Breadcrumbs items={[{ label: "Contact" }]} />
@@ -150,8 +145,5 @@ export default function ContactPage() {
           </div>
         </section>
       </main>
-
-      <Footer />
-    </div>
   );
 }

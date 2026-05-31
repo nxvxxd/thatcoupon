@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 import { HomeContent } from "./HomeContent";
 import {
   generateWebSiteSchema,
@@ -82,11 +80,9 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFAQSchema(faqItems)) }}
       />
 
-      <Header />
       <main className="min-h-screen">
         <HomeContent />
       </main>
-      <Footer />
     </>
   );
 }

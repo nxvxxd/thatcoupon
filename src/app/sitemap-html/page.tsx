@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 import { SITE_NAME, SITE_URL, stores, categories } from "@/lib/store-data";
 // @ts-expect-error blog-data types
 import { blogPosts } from "@/lib/blog-data";
@@ -27,10 +25,7 @@ const sortedPosts = [...blogPosts].sort((a, b) =>
 
 export default function SitemapHtmlPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-white">
-      <Header />
-
-      <main className="flex-1">
+    <main>
         {/* Hero */}
         <section className="bg-gradient-to-br from-emerald-700 via-emerald-600 to-emerald-500 text-white py-16 px-4">
           <div className="max-w-4xl mx-auto">
@@ -202,8 +197,5 @@ export default function SitemapHtmlPage() {
           </div>
         </section>
       </main>
-
-      <Footer />
-    </div>
   );
 }

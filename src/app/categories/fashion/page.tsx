@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { stores, categories, SITE_NAME, SITE_URL } from "@/lib/store-data";
 import { ArrowRight, Tag, Percent, Shirt, Gem, Sparkles } from "lucide-react";
@@ -41,10 +39,7 @@ export default function FashionCategoryPage() {
   );
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-
-      <main className="flex-1 bg-white">
+    <main className="bg-white">
         <section className="bg-gradient-to-br from-emerald-800 to-emerald-600 text-white py-16">
           <div className="max-w-6xl mx-auto px-4 text-center">
             <Breadcrumbs
@@ -226,8 +221,5 @@ export default function FashionCategoryPage() {
           </div>
         </section>
       </main>
-
-      <Footer />
-    </div>
   );
 }

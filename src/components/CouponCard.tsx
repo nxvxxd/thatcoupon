@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useCopyCode } from "./hooks";
-import { ExternalLink, Flame, Sparkles, Coins, Percent, CheckCircle2 } from "lucide-react";
+import { ExternalLink, Flame, Sparkles, Coins, Percent, CheckCircle2, Copy, ArrowRight } from "lucide-react";
 
 interface CouponCardProps {
   id: string;
@@ -39,60 +39,109 @@ export function CouponCard({
   const badgeLabel = category.toLowerCase().includes("cashback") ? category : `${discount} — ${category}`;
 
   return (
-    <article id={id} className="rounded-2xl overflow-hidden flex cursor-pointer transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl relative min-h-[200px]">
+    <article
+      id={id}
+      className="group rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-gray-200 hover:-translate-y-1 relative"
+    >
+      {/* Badge */}
       {(isHot || isNew) && (
-        <div className="absolute top-4 right-[170px] bg-red-500 text-white px-3 py-1.5 rounded-full text-xs font-bold z-10 flex items-center gap-1">
+        <div className="absolute top-4 left-4 z-20 bg-gradient-to-r from-red-500 to-rose-500 text-white px-3 py-1 rounded-full text-[11px] font-bold flex items-center gap-1.5 shadow-lg shadow-red-500/25">
           {isHot ? <><Flame className="w-3 h-3" /> HOT</> : <><Sparkles className="w-3 h-3" /> NEW</>}
         </div>
       )}
+
+      {/* Top: Store Info */}
       <div
-        className="flex-1 p-6 flex flex-col justify-center relative z-[1]"
-        style={{ background: cardBg, color: cardTextColor }}
+        className="px-6 pt-6 pb-4 relative z-[1]"
+        style={{ background: `linear-gradient(135deg, ${cardBg}, ${cardBg}dd)` }}
       >
-        <div className="text-2xl font-black mb-3 tracking-tight">{store}</div>
-        <div
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold mb-1.5 w-fit"
-          style={{ background: badgeColor, color: badgeText }}
-        >
-          <BadgeIcon className="w-3 h-3" style={{ color: "#F59E0B" }} />
-          {badgeLabel}
+        <div className="flex items-center gap-3 mb-3">
+          <div
+            className="w-12 h-12 rounded-xl flex items-center justify-center font-extrabold text-[9px] shadow-md shrink-0"
+            style={{ background: logoBg, color: logoColor }}
+          >
+            {logoText}
+          </div>
+          <div>
+            <div className="text-xl font-black tracking-tight" style={{ color: cardTextColor }}>
+              {store}
+            </div>
+            <div
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold w-fit"
+              style={{ background: badgeColor, color: badgeText }}
+            >
+              <BadgeIcon className="w-3 h-3" style={{ color: "#F59E0B" }} />
+              {badgeLabel}
+            </div>
+          </div>
         </div>
-        <p className="text-xs opacity-80 mt-1">{description}</p>
-        <div className="mt-2 opacity-100">
-          <span className="text-xs font-semibold" style={{ color: cardTextColor }}>
-            Use code at checkout • {category}
-          </span>
-        </div>
+        <p className="text-sm opacity-90 leading-relaxed" style={{ color: cardTextColor }}>
+          {description}
+        </p>
       </div>
-      <div className="w-[160px] bg-white flex flex-col items-center justify-center p-5 gap-3 shrink-0">
-        <div className="text-center">
-          <span className="text-3xl font-black text-emerald-800 leading-tight">{discount}</span>
+
+      {/* Bottom: Code + Actions */}
+      <div className="px-6 py-5 bg-white">
+        <div className="flex items-center gap-4 mb-4">
+          {/* Discount */}
+          <div className="shrink-0">
+            <span className="text-3xl font-black text-emerald-700 leading-none">{discount}</span>
+          </div>
+
+          {/* Code Box */}
+          <div className="flex-1 bg-gray-50 border-2 border-dashed rounded-xl py-3 text-center relative overflow-hidden">
+            <span
+              className="font-mono font-black text-base tracking-[0.2em] block"
+              style={{ color: borderColor }}
+            >
+              {code}
+            </span>
+          </div>
         </div>
-        <div
-          className="w-full bg-gray-50 border-2 border-dashed rounded-md py-2.5 text-center font-mono font-black text-sm tracking-widest"
-          style={{ color: borderColor, borderColor }}
-        >
-          {code}
+
+        {/* Action Buttons */}
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={() => copyCode(code, id)}
+            className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-bold transition-all duration-300 border-none cursor-pointer ${
+              isCopied
+                ? "bg-emerald-600 text-white shadow-lg shadow-emerald-600/25"
+                : "text-white hover:shadow-lg"
+            }`}
+            style={!isCopied ? { background: copyBtnBg } : {}}
+          >
+            {isCopied ? (
+              <><CheckCircle2 className="w-4 h-4" /> COPIED!</>
+            ) : (
+              <><Copy className="w-4 h-4" /> COPY CODE</>
+            )}
+          </button>
+
+          <a
+            href={outboundUrl}
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+            className="flex items-center gap-1.5 px-4 py-3 bg-gray-50 hover:bg-gray-100 text-gray-600 hover:text-emerald-700 rounded-xl text-sm font-semibold transition-all no-underline border border-gray-200"
+            onClick={(e) => e.stopPropagation()}
+          >
+            Visit <ExternalLink className="w-3.5 h-3.5" />
+          </a>
         </div>
-        <button
-          onClick={() => copyCode(code, id)}
-          className="w-full py-2.5 text-white border-none rounded-md text-xs font-bold cursor-pointer transition-all tracking-wide"
-          style={{ background: isCopied ? "#14B8A6" : copyBtnBg }}
-        >
-          {isCopied ? "COPIED!" : "COPY CODE"}
-        </button>
-        <a
-          href={outboundUrl}
-          target="_blank"
-          rel="nofollow noopener noreferrer"
-          className="text-xs text-gray-500 hover:text-emerald-700 transition-colors flex items-center gap-1 no-underline mt-1"
-          onClick={(e) => e.stopPropagation()}
-        >
-          Shop {store} <ExternalLink className="w-3 h-3" />
-        </a>
-        <div className="flex items-center gap-1 text-[10px] text-gray-400 mt-1">
-          <CheckCircle2 className="w-3 h-3 text-emerald-500" />
-          <span>Verified {new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short" })}</span>
+
+        {/* Meta */}
+        <div className="flex items-center justify-between mt-3.5 text-[11px] text-gray-400">
+          <div className="flex items-center gap-1">
+            <CheckCircle2 className="w-3 h-3 text-emerald-500" />
+            <span>Verified today</span>
+          </div>
+          <Link
+            href={`/${storeSlug}/`}
+            className="flex items-center gap-1 text-emerald-600 hover:text-emerald-700 font-medium no-underline transition-colors"
+            onClick={(e) => e.stopPropagation()}
+          >
+            All {store} codes <ArrowRight className="w-3 h-3" />
+          </Link>
         </div>
       </div>
     </article>

@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 import { SITE_NAME, SITE_URL } from "@/lib/store-data";
 import { CopyButton } from "@/components/CopyButton";
 // @ts-expect-error blog-data types
@@ -64,7 +62,6 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <>
-      <Header />
       <main className="min-h-screen bg-white">
       {/* BlogPosting Schema */}
       <script
@@ -348,7 +345,6 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
       </div>
       </main>
-      <Footer />
     </>
   );
 }
